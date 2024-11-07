@@ -95,7 +95,7 @@ st.markdown(f"<h3 style='text-align: center;'>{porto_selecionado}</h3>", unsafe_
 # Obter todos os temas únicos (ODS)
 temas = df['TEMA'].unique()
 
-# Gerar um par de gráficos (porto e média) para cada tema
+# Gerar um par de gráficos (porto e Average) para cada tema
 for tema in temas:
     df_filtrado = df[df['TEMA'] == tema]
 
@@ -115,7 +115,7 @@ for tema in temas:
     # Criar o gráfico de radar
     theta = radar_factory(N, frame='polygon')
 
-    # Gráfico comparativo do porto selecionado com a média para o tema atual
+    # Gráfico comparativo do porto selecionado com a Average para o tema atual
     fig, (ax1, ax2) = plt.subplots(figsize=(12, 6), nrows=1, ncols=2, subplot_kw=dict(projection='radar'))
     fig.subplots_adjust(wspace=0.5, top=0.85, bottom=0.15)
 
@@ -129,11 +129,11 @@ for tema in temas:
     ax1.set_varlabels(labels, fontsize=10)
     ax1.set_title(f"{porto_selecionado} - {tema}", weight='bold', size='medium', position=(0.5, 1.1), horizontalalignment='center')
 
-    # Gráfico da média
-    ax2.plot(theta, valores_media, color='gray', linewidth=2, linestyle='--', label='Média')
+    # Gráfico da Average
+    ax2.plot(theta, valores_media, color='gray', linewidth=2, linestyle='--', label='Average')
     ax2.fill(theta, valores_media, color='gray', alpha=0.2)
     ax2.set_varlabels(labels, fontsize=10)
-    ax2.set_title(f"Média - {tema}", weight='bold', size='medium', position=(0.5, 1.1), horizontalalignment='center')
+    ax2.set_title(f"Average - {tema}", weight='bold', size='medium', position=(0.5, 1.1), horizontalalignment='center')
 
     # Configurações de grade e legendas
     for ax in (ax1, ax2):
